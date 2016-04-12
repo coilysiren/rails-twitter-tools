@@ -28,7 +28,16 @@
         %a.navbar-brand(href="#") Twitter Mute Till Election
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Homepage", "/"
+            %li= link_to "Home", "/"
+            - if current_user
+              %li= link_to "Logout", "/logout"
+              %li
+                %span --
+                %span= current_user.user_name
+                %img(src="#{current_user.user_picture}")
+                %span --
+            - else
+              %li= link_to "Login", "/auth/twitter"
 
     .container
       .row

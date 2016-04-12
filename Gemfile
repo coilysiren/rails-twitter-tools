@@ -21,15 +21,16 @@ gem 'puma'
 gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'attr_encrypted'
 
 group :development do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'spring'
 end
 
 group :production do
-  # for heroku
   gem 'rails_12factor'
 end
