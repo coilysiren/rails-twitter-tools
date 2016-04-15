@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :user_picture, presence: true
 
   def self.get(auth)
-    puts user
+    puts auth
     user = User.find_or_create_by(user_id: auth.extra.raw_info.id)
     user.update_attributes(
       user_key: auth.credentials.token,
