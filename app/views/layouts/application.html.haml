@@ -32,9 +32,9 @@
             - if current_user
               %hr
               .bottom
-                .login
+                .login(title="You!")
                   %span.name= current_user.user_name
                   %img.avatar(src="#{current_user.user_picture}")
-                %a(href="/logout" title="logout" class="close")
+                %a(href="/logout" title="Logout" class="close")
                   %i.fa.fa-close
             %footer A <a href='http://twitter.com/lynncyrin'>Lynn Cyrin</a> thing
