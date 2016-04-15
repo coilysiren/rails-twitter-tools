@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many :actions
+  has_many :actions, :dependent => :delete_all
 
   attr_encrypted :user_key, :key => Rails.application.secrets.secret_key_base, :encode => true, :charset => "utf-8"
   attr_encrypted :user_secret, :key => Rails.application.secrets.secret_key_base, :encode => true, :charset => "utf-8"
@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates :user_picture, presence: true
 
   def self.get(auth)
+    puts user
     user = User.find_or_create_by(user_id: auth.extra.raw_info.id)
     user.update_attributes(
       user_key: auth.credentials.token,
