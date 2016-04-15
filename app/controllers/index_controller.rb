@@ -6,8 +6,8 @@ class IndexController < ApplicationController
   def mute
     if current_user
       target = params['target']
-      Action.mute(current_user, target)
-      redirect_to '/', notice: "Muted #{target}"
+      message = Action.mute(current_user, target)
+      redirect_to '/', notice: message
     else
       redirect_to '/', notice: 'Invalid Login'
     end
