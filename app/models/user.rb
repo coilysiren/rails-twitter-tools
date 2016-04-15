@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :actions
+
   attr_encrypted :user_key, :key => Rails.application.secrets.secret_key_base
   attr_encrypted :user_secret, :key => Rails.application.secrets.secret_key_base
 

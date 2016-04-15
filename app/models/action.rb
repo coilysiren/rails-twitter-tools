@@ -1,12 +1,12 @@
 class Action < ActiveRecord::Base
 
-  attr_encrypted :user_key, :key => Rails.application.secrets.secret_key_base
-  attr_encrypted :user_secret, :key => Rails.application.secrets.secret_key_base
+  belongs_to :user
 
-  validates :user_id, presence: true
-  validates :user_key, presence: true
-  validates :user_secret, presence: true
-  validates :target_id, presence: true
-  validates :unmute_when, presence: true
+  validates :target, presence: true
+
+  def self.mute(user, target)
+    Action.create('user': user, 'target': target)
+    TwitterClient.create_user(user).mute(target)
+  end
 
 end

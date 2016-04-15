@@ -11,20 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412091121) do
+ActiveRecord::Schema.define(version: 20160415024706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "actions", force: :cascade do |t|
-    t.string   "user_id"
-    t.string   "encrypted_user_key"
-    t.string   "encrypted_user_secret"
-    t.string   "target_id"
-    t.datetime "unmute_when"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "target"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  add_index "actions", ["user_id"], name: "index_actions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "user_id"
@@ -36,4 +35,5 @@ ActiveRecord::Schema.define(version: 20160412091121) do
     t.datetime "updated_at",            null: false
   end
 
+  add_foreign_key "actions", "users"
 end
