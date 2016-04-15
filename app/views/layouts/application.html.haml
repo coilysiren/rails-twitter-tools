@@ -33,7 +33,6 @@
               %hr
               .bottom
                 .login
-                  %strong Logged in as:
                   %span.name= current_user.user_name
                   %img.avatar(src="#{current_user.user_picture}")
                 %a(href="/logout" title="logout" class="close")
