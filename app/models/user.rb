@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
 
   has_many :actions
 
-  attr_encrypted :user_key, :key => Rails.application.secrets.secret_key_base
-  attr_encrypted :user_secret, :key => Rails.application.secrets.secret_key_base
+  attr_encrypted :user_key, :key => Rails.application.secrets.secret_key_base, :encode => true, :charset => "utf-8"
+  attr_encrypted :user_secret, :key => Rails.application.secrets.secret_key_base, :encode => true, :charset => "utf-8"
 
   validates :user_id, presence: true
   validates :user_key, presence: true
