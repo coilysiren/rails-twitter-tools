@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+ruby '2.3.1'
 
-gem 'rails', '4.2.5'
+gem 'rails', '~> 4.2'
 gem 'dotenv-rails'
 gem 'pg', '~> 0.15'
 
@@ -21,7 +21,7 @@ gem 'puma'
 gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
-gem 'attr_encrypted'
+gem 'attr_encrypted', '~> 1'
 
 group :development do
   gem 'byebug'
