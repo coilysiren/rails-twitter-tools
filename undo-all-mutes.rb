@@ -3,7 +3,7 @@ for mute in Action.all()
     client = TwitterClient.create_user(mute.user)
     client.unmute(mute.target)
     mute.delete()
-  rescue NoMethodError
+  rescue NoMethodError, Twitter::Error::Forbidden
     nil
   end
 end
