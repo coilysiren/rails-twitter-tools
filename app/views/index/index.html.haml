@@ -2,8 +2,8 @@
   %p Find out who these people are 😡
   %a.btn.btn-primary(href='/auth/twitter') Authorize Your Account
 - else
-  = form_tag("/mute", method: "post", class: "form-group form-inline") do
-    = label_tag("mute", "Person to find mutuals with", class: "sr-only")
+  = form_tag("/action", method: "post", class: "form-group form-inline") do
+    = label_tag("target", "Person to find mutuals with", class: "sr-only")
     .input-group
       .input-group-addon @
       = text_field_tag("target", "", class: "form-control")

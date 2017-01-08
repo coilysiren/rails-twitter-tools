@@ -24,7 +24,7 @@
         .col-lg-offset-2.col-lg-8
           .jumbotron
             .top
-              %a.code-icon(href="https://github.com/LynnCo/rails-twitter-tools/tree/mute-till-election" title="source code on github" class="close")
+              %a.code-icon(href="https://github.com/lynnco/rails-twitter-tools/tree/get-mutuals" title="source code on github" class="close")
                 %i.fa.fa-code
               %h1 I Have Mutuals With Who ?!?!
             = bootstrap_flash
@@ -32,9 +32,9 @@
             - if current_user
               %hr
               .bottom
-                .login(title="You!")
-                  %span.name= current_user.user_name
+                .user-info(title="You!")
                   %img.avatar(src="#{current_user.user_picture}")
+                  %span.name= current_user.user_name
                 %a(href="/logout" title="Logout" class="close")
                   %i.fa.fa-close
             %footer By <a href='http://twitter.com/lynncyrin'>Lynn Cyrin</a>

@@ -1,0 +1,22 @@
+%p Target:
+
+.user-info
+  %span ⚔😷💩
+  %img.avatar(src="#{@origin[:profile_image_url]}")
+  %a.name(href="https://twitter.com/@#{@origin[:screen_name]}")= @origin[:screen_name]
+  %span 💩😷⚔
+
+%hr
+
+%p Mutuals:
+
+%ul.user-list
+  - for target in @target_list
+    %li
+      .user-info
+        %img.avatar(src="#{target[:profile_image_url]}")
+        %a.name(href="https://twitter.com/@#{target[:screen_name]}")= target[:screen_name]
+
+%hr
+
+%a.btn.btn-primary(href='/') back
