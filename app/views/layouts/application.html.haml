@@ -4,7 +4,7 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "Twitter Mute Till Election"
+    %title= content_for?(:title) ? yield(:title) : "I Have Mutuals With Who ?!?!"
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
@@ -26,7 +26,7 @@
             .top
               %a.code-icon(href="https://github.com/LynnCo/rails-twitter-tools/tree/mute-till-election" title="source code on github" class="close")
                 %i.fa.fa-code
-              %h1 Mute on Twitter Until US Election 2016
+              %h1 I Have Mutuals With Who ?!?!
             = bootstrap_flash
             = yield
             - if current_user
