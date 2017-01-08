@@ -30,7 +30,7 @@ class Follow < ActiveRecord::Base
         elsif type == 'followers'
           response = client.follower_ids(target, :cursor => cursor).to_h
         end
-        self.get_follows_page(client, target,
+        self.get_follows_page(client, target, type,
           fof: fof + response[:ids],
           cursor: response[:next_cursor],
         )
