@@ -8,22 +8,28 @@ class Follow < ActiveRecord::Base
 
   def self.get_follows(client, target)
     client_id = self.id_from_twitter_auth(client)
-    status = "follows/source:#{client_id}/target:#{target}"
+    status = "mutuals/source:#{client_id}/target:#{target}"
 
     Rails.cache.fetch(status, expires_in: 1.months) do
       Rails.logger.info { status }
-      self.get_follows_page(client, target)
+      following = self.get_follows_page(client, target, 'following')
+      followers = self.get_follows_page(client, target, 'followers')
+      return following & followers
     end
   end
 
-  def self.get_follows_page(client, target, fof: [], cursor: -1)
+  def self.get_follows_page(client, target, type, fof: [], cursor: -1)
     client_id = self.id_from_twitter_auth(client)
-    status = "follows/source:#{client_id}/target:#{target}/page:#{cursor}"
+    status = "mutuals/#{type}/source:#{client_id}/target:#{target}/page:#{cursor}"
 
     Rails.cache.fetch(status, expires_in: 1.months) do
       Rails.logger.info { status }
       if cursor != 0
-        response = client.friend_ids(target, :cursor => cursor).to_h
+        if type == 'following'
+          response = client.friend_ids(target, :cursor => cursor).to_h
+        elsif type == 'followers'
+          response = client.follower_ids(target, :cursor => cursor).to_h
+        end
         self.get_follows_page(client, target,
           fof: fof + response[:ids],
           cursor: response[:next_cursor],
