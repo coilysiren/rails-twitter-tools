@@ -1,11 +1,5 @@
 class IndexController < ApplicationController
 
-  def index
-  end
-
-  def result
-  end
-
   def action
     if current_user
       begin
