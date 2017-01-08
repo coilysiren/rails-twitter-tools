@@ -8,14 +8,16 @@
 
 %hr
 
-%p Mutuals:
-
-%ul.user-list
-  - for target in @target_list
-    %li
-      .user-info
-        %img.avatar(src="#{target[:profile_image_url]}")
-        %a.name(href="https://twitter.com/@#{target[:screen_name]}")= target[:screen_name]
+- if @target_list.size == 0
+  %p ✅ No Mutuals ✅
+- else
+  %p Mutuals:
+  %ul.user-list
+    - for target in @target_list
+      %li
+        .user-info
+          %img.avatar(src="#{target[:profile_image_url]}")
+          %a.name(href="https://twitter.com/@#{target[:screen_name]}")= target[:screen_name]
 
 %hr
 
